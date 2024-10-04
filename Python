@@ -1,0 +1,54 @@
+class node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class ll:
+    def __init__(self):
+        self.top=None 
+    def push(self, n):
+        new_node = node(n)
+        if self.top is None:
+            self.top = new_node
+        else:
+            new_node.next = self.top
+            self.top = new_node
+
+    def pop(self):
+        if self.top is None:
+            raise IndexError("Empty Stack")
+        else:
+            self.top = self.top.next
+
+    def peek(self):
+        if self.top is None:
+            raise IndexError("Empty Stack")
+        else:
+            print(self.top.data)
+
+    def display(self):
+        if self.top is None:
+            raise IndexError("Empty Stack")
+        else:
+            temp = self.top
+            while temp is not None:
+                print(temp.data, "->", end=" ")
+                temp = temp.next
+            print("NULL")
+            print()
+
+if __name__ == '__main__':
+    l = ll()
+    while True:
+        i = int(input("Enter the choice:"))
+        if i==1:
+            n=int(input("Enter the elmt:"))
+            l.push(n)
+        elif i==2:
+            l.pop()
+        elif i==3:
+            l.peek()
+        elif i==4:
+            l.display()
+        else:
+            print("Exit")
+            break
